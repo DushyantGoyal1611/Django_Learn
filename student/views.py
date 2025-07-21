@@ -7,7 +7,7 @@ from .serializers import StudentSerializer
 
 @api_view(["POST"])
 def student_create(request):
-    serializer = StudentSerializer(request.data)
+    serializer = StudentSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -55,7 +55,7 @@ def student_delete(request, id):
 @api_view(["PATCH", "POST"])
 def student_update(request, id):
     student = get_object_or_404(Student, pk=id)
-    serializer = StudentSerializer(student, partial=True)
+    serializer = StudentSerializer(student, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)

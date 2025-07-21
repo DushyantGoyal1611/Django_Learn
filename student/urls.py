@@ -13,8 +13,8 @@ from . import views
 
 urlpatterns = [
     path('', views.student_get, name='student_get'),
-    path('', views.student_create, name='student_create'),
+    path('create/', views.student_create, name='student_create'),
     path('<int:id>/', views.student_get_by_id, name='student_get_by_id'),
-    path('<int:id>/', views.student_delete, name='student_delete'),
-    path('<int:id>/', views.student_update, name='student_update'),
+    path('<int:id>/delete/', views.student_delete, name='student_delete'),
+    path('<int:id>/update/', views.student_update, name='student_update'),
 ]
